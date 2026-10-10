@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ФинНаставник</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="theme-color" content="#4F46E5">
+</head>
+<body class="bg-gray-100 font-sans antialiased text-gray-800">
+
+    <header class="bg-indigo-600 text-white p-4 shadow-md sticky top-0 z-10">
+        <h1 class="text-xl font-bold text-center">ФинНаставник ИИ</h1>
+    </header>
+
+    <main class="p-4 max-w-md mx-auto pb-24">
+        <!-- Карточка: Займер (Красная зона) -->
+        <div class="bg-white rounded-xl shadow p-5 mb-4 border-l-4 border-red-600">
+            <h2 class="text-sm text-gray-500 uppercase font-bold">Цель №1: Убить Займер</h2>
+            <p class="text-3xl font-bold text-gray-800 mt-1">22 744 ₽</p>
+            <p class="text-xs text-red-500 mt-2">Ждем аванс, чтобы закрыть полностью!</p>
+        </div>
+
+        <!-- Карточка: Сбер (Желтая зона) -->
+        <div class="bg-white rounded-xl shadow p-5 mb-4 border-l-4 border-yellow-500">
+            <h2 class="text-sm text-gray-500 uppercase font-bold">Сбербанк (Кредитка)</h2>
+            <p class="text-2xl font-bold text-gray-800 mt-1">10 000 ₽</p>
+            <p class="text-xs text-gray-400 mt-2">Мин. платеж: 800 ₽</p>
+        </div>
+
+        <!-- Чат с ИИ -->
+        <div class="bg-white rounded-xl shadow p-5 mb-4">
+            <h2 class="text-sm text-gray-500 uppercase font-bold mb-3">Твой Бро</h2>
+            <div class="bg-indigo-50 p-3 rounded-lg text-sm text-indigo-900 mb-3" id="ai-message">
+                Привет! План на сегодня: тратим только на базу (связь, жижа, бензин). Духи пока откладываем. Прорвемся! 👊
+            </div>
+            <div class="flex gap-2">
+                <input type="text" id="chat-input" placeholder="Напиши трату или вопрос..." class="flex-1 border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500">
+                <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-bold" onclick="sendMessage()">Отправить</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function sendMessage() {
+            let input = document.getElementById('chat-input');
+            let aiMessage = document.getElementById('ai-message');
+            if(input.value) {
+                aiMessage.innerHTML = "<i>Думаю... (Скоро здесь будет отвечать нейросеть)</i>";
+                input.value = '';
+            }
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
